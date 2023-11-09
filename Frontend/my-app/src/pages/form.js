@@ -7,22 +7,25 @@ import axios from "axios";
 export default function Form() {
   const navigate = useNavigate();
   const [sendData, setSendData] = useState({
-   
-  });
+    name: "",
+    shortName: "",
+    fee: ""
+  });// bhai mene neeche input wale tag pe kaam kia hai wo dekh lou field ke liye 
   const GoToData = () => {
     navigate("/");
   };
 
   const handleInputChange = (key, val) => {
-   sendData[key] = val
-   setSendData({...sendData})
+    setSendData({ ...sendData , [key]:val });
   };
 
   const AddCourse = () => {
-    console.log(sendData)
-    axios.post("http://localhost:5000/course", sendData)
+    console.log(sendData);
+
+    axios
+      .post("http://localhost:5000/course", { ...sendData })
       .then((res) => {
-        console.log(res.data.data);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -34,12 +37,6 @@ export default function Form() {
       fee: "",
     });
   };
-
-  useEffect(() => {
-    AddCourse();
-  }, []);
-
-  
 
   return (
     <>
@@ -53,21 +50,23 @@ export default function Form() {
             <div>
               <BackInp
                 name="name"
-                onChange={(e)=>handleInputChange("name",e.target.value)}
+                onChange={(e) => handleInputChange("name", e.target.value)}
                 label="Enter Yor Name"
               />
             </div>
             <div>
-              <BackInp 
-               name="shortName"
-               onChange={(e)=>handleInputChange("shortName",e.target.value)}
-              label="Enter Yor Short Name" />
+              <BackInp
+                name="shortName"
+                onChange={(e) => handleInputChange("shortName", e.target.value)}
+                label="Enter Yor Short Name"
+              />
             </div>
             <div>
               <BackInp
-               name="fee"
-               onChange={(e)=>handleInputChange("fee",e.target.value)}
-              label="Enter Fee" />
+                name="fee"
+                onChange={(e) => handleInputChange("fee", e.target.value)}
+                label="Enter Fee"
+              />
             </div>
             <div>
               <BackBtn onClick={AddCourse} label="Submit" />

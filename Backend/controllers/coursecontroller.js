@@ -133,7 +133,7 @@ const CourseController = {
     
   }
   catch(e){
-    res.status(500).send(SendResponse(false, "Internal Error", e));
+    res.status(400).send(SendResponse(false, "Internal Error", e));
   
   }
 },

@@ -3,22 +3,20 @@ const express = require("express");
 const mongoose = require("mongoose");
 const courseRoute = require("./routers/courseroute");
 const cors = require("cors")
-// const authRoute = require("./routes/authroute");
+const authRoute = require("./routers/authroutes");
 
 const App = express();
 App.use(express.json());
 App.use(cors())
 
 App.use("/course", courseRoute);
-// App.use("/auth", authRoute);
-// App.use("/user", userRoute);
+App.use("/auth", authRoute);
 
 mongoose
   .connect(process.env.DATA_URI)
   .then(() => {
     App.listen(process.env.PORT, () => {
-      console.log(
-        `Database Connected and server is listening http://localhost:${process.env.PORT}`
+      console.log(`Database Connected and server is listening http://localhost:${process.env.PORT}`
       );
     });
   })
