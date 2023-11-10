@@ -6,6 +6,6 @@ route.get("/", CourseController.get);
 route.get("/:id", CourseController.getById);
 route.post("/", CourseController.add);
 route.delete("/:id", CourseController.del);
-route.put("/:id", CourseController.update)
+route.put("/update/:id", CourseController.update)
 
 module.exports = route;

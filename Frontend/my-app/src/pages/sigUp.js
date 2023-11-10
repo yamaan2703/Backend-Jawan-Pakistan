@@ -1,7 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import BackBtn from "../components/backBtn";
 import BackInp from "../components/backInp";
 
 export default function SignUp () {
+  const navigate = useNavigate()
+  const [sendSignUp, setSendSignUp] = ({
+
+  })
+
+  const GoToLogin = () => {
+    navigate("/login")
+  }
+
+  // const SignUp = () => {
+  //   axios.
+  // }
     return (
         <>
         <div className="h-screen bg-sky-500 flex justify-center items-center">
@@ -34,6 +47,7 @@ export default function SignUp () {
 
             <div className="my-1">
               <BackBtn 
+              onClick={GoToLogin}
               label="Go To Login"/>
             </div>
            </div>

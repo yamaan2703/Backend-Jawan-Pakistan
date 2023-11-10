@@ -5,13 +5,17 @@ const { SendResponse } = require("../helpers/helper");
 
 const AuthController = {
     signup: async (req, res) => {
+        console.log(req.body)
         try {
-            let {userName, password, contact} = req.body
-            let obj = {userName, password, contact}
+            let {userName, email, password } = req.body
+            let obj = {userName, email, password}
             let errArr = []
 
             if(!obj.userName){
                 errArr.push("User Name is Required")
+            }
+            if(!obj.email) {
+                errArr.push("Email is Required")
             }
             if(!obj.password){
                 errArr.push("Password is Required")

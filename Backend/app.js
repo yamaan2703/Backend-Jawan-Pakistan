@@ -4,10 +4,16 @@ const mongoose = require("mongoose");
 const courseRoute = require("./routers/courseroute");
 const cors = require("cors")
 const authRoute = require("./routers/authroutes");
+const bodyParser = require('body-parser')
 
 const App = express();
 App.use(express.json());
 App.use(cors())
+// support parsing of application/json type post data
+App.use(bodyParser.json());
+
+//support parsing of application/x-www-form-urlencoded post data
+App.use(bodyParser.urlencoded({ extended: true }));
 
 App.use("/course", courseRoute);
 App.use("/auth", authRoute);

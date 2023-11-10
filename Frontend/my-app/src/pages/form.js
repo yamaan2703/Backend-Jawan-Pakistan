@@ -10,7 +10,7 @@ export default function Form() {
     name: "",
     shortName: "",
     fee: ""
-  });// bhai mene neeche input wale tag pe kaam kia hai wo dekh lou field ke liye 
+  }); 
   const GoToData = () => {
     navigate("/");
   };

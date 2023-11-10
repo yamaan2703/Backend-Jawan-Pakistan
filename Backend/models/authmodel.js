@@ -5,13 +5,15 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: [true, "User Name is Required"],
   },
+  email: {
+    type: String,
+    required: [true, "User Name is Required"],
+  },
   password: {
     type: String,
     required: [true, "User Name is Required"],
   },
-  contact: {
-    type: String,
-  },
+ 
 });
 
 const UserModel = mongoose.model("users", UserSchema);

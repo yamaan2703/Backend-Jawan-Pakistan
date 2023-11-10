@@ -140,12 +140,13 @@ const CourseController = {
 
 
 update: async (req, res) => {
+  console.log(req.body)
   try {
-    const _id = req.body.id;
-    if (!_id || !ObjectId.isValid(_id)) {
+    const _id = req.params.id;
+    // if (!_id || !ObjectId.isValid(_id)) {
+      if (!_id) {
       return res.status(400).send(SendResponse(false, "Invalid Course ID"));
     }
-
     const updatedData = await CourseModel.findByIdAndUpdate(_id, req.body, { new: true });
 
     if (!updatedData) {
@@ -154,6 +155,7 @@ update: async (req, res) => {
 
     res.status(200).send(SendResponse(true, "Data Updated Successfully", updatedData));
   } catch (error) {
+    console.log(error)
     res.status(500).send(SendResponse(false, "Internal Error", error));
   }
 }
