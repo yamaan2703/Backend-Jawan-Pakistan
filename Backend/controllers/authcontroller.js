@@ -71,8 +71,27 @@ const AuthController = {
         } catch (error) {
            res.status(400).send(SendResponse(false, "Invalid Error"))    
         }
-    }
+    },
 
+    protected: async (req, res, next) => {
+        // Bearer
+        let token = req.headers.authorization?.split("")[1]
+        if(!token){
+            res.status(401).send(SendResponse(false, "Un Authorized"))
+            return
+        }else{
+            jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+                if(err){
+                    res.status(401).send(SendResponse(false, "Un Autorized"))
+                
+                }else{
+                    // req.decoded = decoded
+                    next()
+                }
+            })
+        }
+     
+    }
 }
 
 

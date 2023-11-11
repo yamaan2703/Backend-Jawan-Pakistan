@@ -106,7 +106,7 @@ import { useState } from "react";
 export default function SignUp() {
   const navigate = useNavigate();
   const [sendSignUp, setSendSignUp] = useState({
-    name: "",
+    userName: "",
     email: "",
     password: "",
   });
@@ -126,7 +126,7 @@ export default function SignUp() {
       .then((res) => {
         console.log(res.data);
         setSendSignUp({
-          name: "",
+          userName: "",
           email: "",
           password: "",
         });
@@ -146,8 +146,8 @@ export default function SignUp() {
         <div className="my-2">
           <div className="my-1">
             <BackInp
-              value={sendSignUp.name}
-              onChange={(e) => handleInputChange("name", e.target.value)}
+              value={sendSignUp.userName}
+              onChange={(e) => handleInputChange("userName", e.target.value)}
               label="Name"
             />
           </div>
